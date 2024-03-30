@@ -1,0 +1,1 @@
+insert into EMPLOYEE(ID,NAME,CITY) values(1,'Mani','Hyderabad');
