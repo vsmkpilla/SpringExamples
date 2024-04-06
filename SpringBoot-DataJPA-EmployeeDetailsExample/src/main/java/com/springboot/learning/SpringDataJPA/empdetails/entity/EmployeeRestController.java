@@ -22,15 +22,23 @@ public class EmployeeRestController {
 		empRepo.save(new Employee(id,name));
 	}
 	
-	@RequestMapping("/find")
+	@RequestMapping("/findById")
 	public Optional<Employee> findEmployee(@RequestParam long id) {
 		Optional<Employee> emp =  empRepo.findById(id);
 		return emp;
 	}
 	
 	@RequestMapping("/findAllEmployees")
-	public List<List<Employee>> findAll(){
-		return Arrays.asList(empRepo.findAll()) ;
+	public List<Employee> findAll(){
+		List<Employee> listEmp = empRepo.findAll();
+		return listEmp ;
 	}
+	@RequestMapping("/findByName")
+	public Employee findEmployeeByName(@RequestParam String name) {
+		Employee emp =  empRepo.findByName(name);
+		return emp;
+	}
+	
+	
 
 }

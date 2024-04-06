@@ -20,6 +20,9 @@ public class EmployeeCommandLineRunner implements CommandLineRunner {
 	empRepository.save(new Employee(11,"MK"));
 	empRepository.save(new Employee(12,"VS"));
 	empRepository.save(new Employee(13,"MMM"));
+	System.out.println(empRepository.findById((long) 11));
+	System.out.println(empRepository.findAll());
+	System.out.println(empRepository.findByName("Mani"));
 	
 	}
 	
