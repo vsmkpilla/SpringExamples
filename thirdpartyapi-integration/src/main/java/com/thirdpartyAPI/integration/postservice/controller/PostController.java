@@ -1,9 +1,12 @@
 package com.thirdpartyAPI.integration.postservice.controller;
 
+import com.thirdpartyAPI.integration.postservice.entity.Post;
+import com.thirdpartyAPI.integration.postservice.entity.PostJPAInterface;
 import com.thirdpartyAPI.integration.postservice.impl.PostServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
@@ -13,6 +16,8 @@ public class PostController {
 
     @Autowired
     PostServiceImpl postService;
+    @Autowired
+    PostJPAInterface postJPAInterface;
     @GetMapping("/posts")
    public  List<Map<String, Object>> getAllPosts(){
             return postService.getPosts();
@@ -20,6 +25,8 @@ public class PostController {
 
         @GetMapping("/posts/{id}")
         public Map<String, Object> getPostById(@PathVariable Integer id){
+
+
         return postService.getPostByID(id);
         }
 
@@ -32,7 +39,6 @@ public class PostController {
     public Map<String, Object> updatePost(@RequestBody Map<String, Object> reqBody,@PathVariable Integer id){
         return postService.updatePost(reqBody,id);
         }
-
     @DeleteMapping("/posts/{id}")
     public Map<String, Object> deletePostByID(@PathVariable Integer id){
         return postService.deletePostByID(id);
