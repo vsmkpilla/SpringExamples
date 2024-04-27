@@ -2,6 +2,7 @@ package com.feignclient.example.controller;
 
 
 import com.feignclient.example.client.OpenAPIClient;
+import com.feignclient.example.service.OpenAPIService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -13,10 +14,10 @@ import java.util.Map;
 public class OpenAPIClientRestControler {
 
     @Autowired
-    OpenAPIClient openAPIClient;
+    private OpenAPIService openAPIService;
     @GetMapping("/fetchObjects")
     public List<Map<String,Object>> fetchAllObjects(){
-        return openAPIClient.getAllObjects();
+        return openAPIService.getObjects();
     }
 
 }
